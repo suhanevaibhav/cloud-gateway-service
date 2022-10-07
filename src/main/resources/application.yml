@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        - id: bank-service
+          uri: lb://BANK-SERVICE
+          predicates:
+            - Path=/bank/**
+        - id: food-service
+          uri: lb://FOOD-SERVICE
+          predicates:
+            - Path=/food/**
+
